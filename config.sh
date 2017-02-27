@@ -151,7 +151,7 @@ sudo pacman -S --noconfirm --needed lm_sensors lsb-release meld mlocate
 sudo pacman -S --noconfirm --needed net-tools notify-osd numlockx polkit-gnome 
 sudo pacman -S --noconfirm --needed rxvt-unicode redshift ristretto screenfetch scrot  
 sudo pacman -S --noconfirm --needed thunar tumbler
-sudo pacman -S --noconfirm --needed vlc vnstat unclutter
+sudo pacman -S --noconfirm --needed vim vlc vnstat unclutter
 sudo pacman -S --noconfirm --needed unace unrar zip unzip sharutils  uudeview  arj cabextract file-roller
 
 
@@ -164,6 +164,19 @@ sudo cp .Xdefaults ~/
 
 
 #################### INSTALL EXTRA ####################
+package="google-chrome"
+command="google-chrome"
+if pacman -Qi $package &> /dev/null; then
+	echo "########## "$package" is already installed ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "########## "$package" has been installed ##########"
+	else
+		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+	fi
+fi
+
 package="dropbox"
 command="dropbox"
 if pacman -Qi $package &> /dev/null; then
@@ -179,6 +192,32 @@ fi
 
 package="spotify"
 command="spotify"
+if pacman -Qi $package &> /dev/null; then
+	echo "########## "$package" is already installed ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "########## "$package" has been installed ##########"
+	else
+		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+	fi
+fi
+
+package="franz-bin"
+command="franz-bin"
+if pacman -Qi $package &> /dev/null; then
+	echo "########## "$package" is already installed ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "########## "$package" has been installed ##########"
+	else
+		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+	fi
+fi
+
+package="jdownloader2"
+command="jdownloader2"
 if pacman -Qi $package &> /dev/null; then
 	echo "########## "$package" is already installed ##########"
 else
@@ -210,6 +249,18 @@ sudo /tmp/hardcode-fixer/fix.sh
 rm -rf /tmp/hardcode-fixer
 
 package="ttf-font-awesome"
+if pacman -Qi $package &> /dev/null; then
+	echo "########## "$package" is already installed ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "########## "$package" has been installed ##########"
+	else
+		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+	fi
+fi
+
+package="pa-applet-git"
 if pacman -Qi $package &> /dev/null; then
 	echo "########## "$package" is already installed ##########"
 else
@@ -303,3 +354,45 @@ sudo cp 50-synaptics.conf /etc/X11/xorg.conf.d/
 sudo cp wallpaper.jpg ~/Bilder/
 sudo pacman -S --noconfirm --needed feh
 feh --bg-center ~/Bilder/wallpaper.jpg
+
+
+#################### INSTALL LaTeX ####################
+sudo pacman -S --noconfirm --needed texlive-most
+sudo pacman -S --noconfirm --needed texlive-lang
+sudo pacman -S --noconfirm --needed texstudio
+
+
+#################### INSTALL PARCELLITE CLIPBOARD ####################
+sudo pacman -S --noconfirm --needed parcellite
+
+
+#################### INSTALL JDK8 ####################
+sudo pacman -S --noconfirm --needed jdk8-openjdk
+
+
+#################### INSTALL JDK8 ####################
+package = "intel-opencl-runtime"
+if pacman -Qi $package &> /dev/null; then
+	echo "########## "$package" is already installed ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "########## "$package" has been installed ##########"
+	else
+		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+	fi
+fi
+
+sudo pacman -S --noconfirm --needed opencl-headers
+
+package = "intel-opencl-sdk"
+if pacman -Qi $package &> /dev/null; then
+	echo "########## "$package" is already installed ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "########## "$package" has been installed ##########"
+	else
+		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+	fi
+fi
