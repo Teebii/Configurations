@@ -4,7 +4,7 @@ set -e
 #################### INSTALL FATEST ANTERGOS MIRRORS ####################
 sudo rankmirrors -n 0 /etc/pacman.d/antergos-mirrorlist > /tmp/antergos-mirrorlist && sudo cp /tmp/antergos-mirrorlist /etc/pacman.d
 cat /etc/pacman.d/antergos-mirrorlist
-pacman -Syu
+sudo pacman -Syu
 
 
 #################### INSTALL FASTEST ARCH MIRRORS #############
@@ -137,7 +137,7 @@ fi
 
 
 #################### COPY i3 CONFIG FILES ####################
-sudo cp i3 ~/.config/i3
+sudo cp -r i3 ~/.config/i3
 
 
 #################### INSTALL SOFTWARE FROM OFFICIAL REPO ####################
@@ -160,7 +160,7 @@ sudo systemctl start vnstat
 
 
 #################### URXVT CONFIG ####################
-sudo cp .Xdefaults ~/
+sudo cp -r .Xdefaults ~/
 
 
 #################### INSTALL EXTRA ####################
@@ -284,115 +284,6 @@ else
 	fi
 fi
 
-package="breeze-snow-cursor-theme"
-if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
-else
-	packer -S --noconfirm --noedit  $package
-	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
-	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
-	fi
-fi
-
-
-#################### INSTALL DISTRO SPECIFIC SOFTWARE ####################
-# Fonts
-sudo pacman -S noto-fonts --noconfirm --needed
-sudo pacman -S ttf-ubuntu-font-family --noconfirm --needed
-sudo pacman -S ttf-droid --noconfirm --noconfirm --needed
-sudo pacman -S ttf-inconsolata --noconfirm --needed
-sudo pacman -S arandr --noconfirm --needed
-sudo pacman -S qt4 --confirm --needed
-sudo pacman -S xorg-xrandr --noconfirm --needed
-sudo pacman -S gvfs  --noconfirm --needed
-sudo pacman -S compton  --noconfirm --needed
-sudo pacman -S volumeicon  --noconfirm --needed
-
-package="playerctl"
-if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
-else
-	packer -S --noconfirm --noedit  $package
-	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
-	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
-	fi
-fi
-
-package="pasystray-git"
-if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
-else
-	packer -S --noconfirm --noedit  $package
-	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
-	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
-	fi
-fi
-
-
-#################### INSTALL LIGHTDM ####################
-sudo pacman -S --noconfirm --needed lightdm
-sudo pacman -S --noconfirm --needed lightdm-gtk-greeter
-sudo pacman -S --noconfirm --needed lightdm-gtk-greeter-settings
-
-sudo rm /etc/lightdm/lightdm.conf
-sudo cp lightdm.conf /etc/lightdm/
-sudo systemctl enable lightdm.service
-
-
-#################### TOUCHPAD CONFIG ####################
-sudo pacman -S --noconfirm --needed xf86-input-synaptics
-sudo cp 50-synaptics.conf /etc/X11/xorg.conf.d/
-
-
-#################### BACKGROUND WITH FEH ####################
-sudo cp wallpaper.jpg ~/Bilder/
-sudo pacman -S --noconfirm --needed feh
-feh --bg-center ~/Bilder/wallpaper.jpg
-
-
-#################### INSTALL LaTeX ####################
-sudo pacman -S --noconfirm --needed texlive-most
-sudo pacman -S --noconfirm --needed texlive-lang
-sudo pacman -S --noconfirm --needed texstudio
-
-
-#################### INSTALL PARCELLITE CLIPBOARD ####################
-sudo pacman -S --noconfirm --needed parcellite
-
-
-#################### INSTALL JDK8 ####################
-sudo pacman -S --noconfirm --needed jdk8-openjdk
-
-
-#################### INSTALL JDK8 ####################
-package = "intel-opencl-runtime"
-if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
-else
-	packer -S --noconfirm --noedit  $package
-	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
-	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
-	fi
-fi
-
-sudo pacman -S --noconfirm --needed opencl-headers
-
-package = "intel-opencl-sdk"
-if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
-else
-	packer -S --noconfirm --noedit  $package
-	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
-	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
-	fi
-fi
+echo "Nach dem Reboot config2.sh ausführen!"
+sleep 30
+reboot
