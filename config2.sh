@@ -1,103 +1,119 @@
-#################### INSTALL DISTRO SPECIFIC SOFTWARE ####################
-# Fonts
-sudo pacman -S noto-fonts --noconfirm --needed
-sudo pacman -S ttf-ubuntu-font-family --noconfirm --needed
-sudo pacman -S ttf-droid --noconfirm --noconfirm --needed
-sudo pacman -S ttf-inconsolata --noconfirm --needed
-sudo pacman -S arandr --noconfirm --needed
-sudo pacman -S qt4 --confirm --needed
-sudo pacman -S xorg-xrandr --noconfirm --needed
-sudo pacman -S gvfs  --noconfirm --needed
-sudo pacman -S compton  --noconfirm --needed
-sudo pacman -S volumeicon  --noconfirm --needed
+#=======================================================================================================================#
+#====================================== INSTALL DISTRO SPECIFIC SOFTWARE ===============================================#
+echo "############################################################"
+echo "##########           Installing Fonts             ##########"
+sudo pacman -S --noconfirm --needed noto-fonts ttf-ubuntu-font-family ttf-droid ttf-inconsolata 
+echo "##########              Successful!               ##########"
+echo ""
 
+echo "############################################################"
+echo "##########          Installing Software           ##########"
+sudo pacman -S --noconfirm --needed arandr qt4 xorg-xrandr gvfs compton volumeicon
+echo "##########              Successful!               ##########"
+echo ""
+
+echo "############################################################"
+echo "##########          Installing playerctl          ##########"
 package="playerctl"
 if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
+	echo "##########            Already installed!              ##########"
 else
 	packer -S --noconfirm --noedit  $package
 	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
+		echo "##########              Successful!               ##########"
 	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+		echo "##########                Failed!                 ##########"
 	fi
 fi
+echo ""
 
+echo "############################################################"
+echo "##########        Installing pasystray-git        ##########"
 package="pasystray-git"
 if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
+	echo "##########            Already installed!              ##########"
 else
 	packer -S --noconfirm --noedit  $package
 	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
+		echo "##########              Successful!               ##########"
 	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+		echo "##########                Failed!                 ##########"
 	fi
 fi
+echo ""
 
 
-#################### INSTALL LIGHTDM ####################
-sudo pacman -S --noconfirm --needed lightdm --force
-sudo pacman -S --noconfirm --needed lightdm-gtk-greeter
-sudo pacman -S --noconfirm --needed lightdm-gtk-greeter-settings
-
-sudo rm /etc/lightdm/lightdm.conf
-sudo cp -r lightdm.conf /etc/lightdm/
-sudo systemctl enable lightdm.service
-
-
-#################### TOUCHPAD CONFIG ####################
+#=============================================== TOUCHPAD CONFIG =======================================================#
+echo "############################################################"
+echo "########## Installing Synaptics and copying config##########"
 sudo pacman -S --noconfirm --needed xf86-input-synaptics
 sudo cp -r 50-synaptics.conf /etc/X11/xorg.conf.d/
+echo "##########              Successful!               ##########"
+echo ""
 
 
-#################### BACKGROUND WITH FEH ####################
-sudo cp -r wallpaper.jpg ~/Bilder/
-sudo pacman -S --noconfirm --needed feh
-feh --bg-center ~/Bilder/wallpaper.jpg
+#================================================ INSTALL LaTeX ========================================================#
+echo "############################################################"
+echo "##########            Installing LaTeX            ##########"
+sudo pacman -S --noconfirm --needed texlive-most texlive-lang texstudio
+echo "##########              Successful!               ##########"
+echo ""
 
 
-#################### INSTALL LaTeX ####################
-sudo pacman -S --noconfirm --needed texlive-most
-sudo pacman -S --noconfirm --needed texlive-lang
-sudo pacman -S --noconfirm --needed texstudio
-
-
-#################### INSTALL PARCELLITE CLIPBOARD ####################
+#======================================== INSTALL PARCELLITE CLIPBOARD =================================================#
+echo "############################################################"
+echo "##########          Installing Parcellite         ##########"
 sudo pacman -S --noconfirm --needed parcellite
+echo "##########              Successful!               ##########"
+echo ""
 
 
-#################### INSTALL JDK8 ####################
+#============================================== INSTALL OPEN-JDK8 ======================================================#
+echo "############################################################"
+echo "##########          Installing Open-JDK8          ##########"
 sudo pacman -S --noconfirm --needed jdk8-openjdk
+echo "##########              Successful!               ##########"
+echo ""
 
 
-#################### INSTALL JDK8 ####################
-package = "intel-opencl-runtime"
+#=============================================== INSTALL OPENCL ========================================================#
+echo "############################################################"
+echo "##########     Installing intel-opencl-runtime    ##########"
+package="intel-opencl-runtime"
 if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
+	echo "##########            Already installed!              ##########"
 else
 	packer -S --noconfirm --noedit  $package
 	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
+		echo "##########              Successful!               ##########"
 	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+		echo "##########                Failed!                 ##########"
 	fi
 fi
+echo ""
 
+echo "############################################################"
+echo "##########        Installing OpenCL-Headers       ##########"
 sudo pacman -S --noconfirm --needed opencl-headers
+echo "##########              Successful!               ##########"
+echo ""
 
-package = "intel-opencl-sdk"
+echo "############################################################"
+echo "##########       Installing intel-opencl-sdk      ##########"
+package="intel-opencl-sdk"
 if pacman -Qi $package &> /dev/null; then
-	echo "########## "$package" is already installed ##########"
+	echo "##########            Already installed!              ##########"
 else
 	packer -S --noconfirm --noedit  $package
 	if pacman -Qi $package &> /dev/null; then
-		echo "########## "$package" has been installed ##########"
+		echo "##########              Successful!               ##########"
 	else
-		echo "!!!!!!!!!! "$package" has NOT been installed !!!!!!!!!!"
+		echo "##########                Failed!                 ##########"
 	fi
 fi
+echo ""
 
 echo "############################################################"
 echo "##########       Installation vollständig!        ##########"
 echo "############################################################"
+#=======================================================================================================================#
