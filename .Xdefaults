@@ -1,0 +1,20 @@
+URxvt.saveLines: 10000
+URxvt.scrollBar: false
+URxvt.inheritPixmap: true
+URxvt.tintColor: grey
+URxvt.shading: 30
+URxvt.foreground: white
+URxvt.background: black
+URxvt.secondaryScroll: true
+URxvt.font: xft:Bitstream Vera Sans Mono:pixelsize=12
+URxvt.perl-ext-common: mark-urls
+URxvt.urlLauncher: firefoxURxvt.tabbed.saveLines: 10000
+URxvt.tabbed.scrollBar: false
+URxvt.tabbed.tabbar-fg: 3
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 0
+URxvt.tabbed.tab-bg: 1
+URxvt.tabbed.secondaryScroll: true
+URxvt.tabbed.font: xft:Bitstream Vera Sans Mono:pixelsize=12
+URxvt.tabbed.perl-ext-common: mark-urls
+URxvt.tabbed.urlLauncher: google-chrome-stable
