@@ -128,7 +128,7 @@ echo ""
 #==================================== INSTALL SOFTWARE FROM OFFICIAL REPO ===============================================#
 echo "############################################################"
 echo "##########      Installing official software      ##########"
-sudo pacman -S --noconfirm --needed baobab bleachbit blueman catfish clementine conky curl dconf-editor dmidecode evince firefox galculator gimp gksu glances gnome-font-viewer gparted hardinfo hddtemp htop lm_sensors lsb-release meld mlocate net-tools notify-osd numlockx polkit-gnome rxvt-unicode redshift ristretto screenfetch scrot thunar tumbler vim vlc vnstat xbindkeys unclutter
+sudo pacman -S --noconfirm --needed baobab bleachbit blueman catfish clementine conky curl dconf-editor dmidecode evince firefox galculator gimp gksu glances gnome-font-viewer gparted hardinfo hddtemp htop lm_sensors lsb-release meld mlocate net-tools notify-osd numlockx polkit-gnome pulseaudio rxvt-unicode redshift ristretto screenfetch scrot thunar tumbler vim vlc vnstat xbindkeys unclutter
 echo "##########              Successful!               ##########"
 echo ""
 
