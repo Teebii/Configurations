@@ -204,25 +204,21 @@ for_window [class="Subl3"] none
 
 
 ########## EXECUTE SERVICES ##########
-# insync
-exec insync start
-
-# Volume
-#exec pasystray
-#exec volti
-#exec volumeicon
-
 # Clipbaord
-exec parcellite
+exec --no-startup-id parcellite
 
 # Dropbox
 exec dropbox
 
-exec pa-applet
+# Network Manager
 exec nm-applet
+
+# Sound
+exec pa-applet
 exec blueman-applet
+
+# Key bindings
 exec --no-startup-id xbindkeys
-exec --no-startup-id parcellite
 
 
 ########## WORKPLACE SHORTCUTS ##########
