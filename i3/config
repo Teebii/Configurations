@@ -210,7 +210,7 @@ exec insync start
 # Volume
 #exec pasystray
 #exec volti
-exec volumeicon
+#exec volumeicon
 
 # Clipbaord
 exec parcellite
@@ -218,7 +218,7 @@ exec parcellite
 # Dropbox
 exec dropbox
 
-#exec pa-applet
+exec pa-applet
 exec nm-applet
 exec blueman-applet
 exec --no-startup-id xbindkeys
@@ -280,14 +280,14 @@ mode "$mode_system" {
 
 
 ################### AUDIO ######################
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
-bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+#bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
+#bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
+#bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 ##https://github.com/acrisci/playerctl/
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioStop exec playerctl stop
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioStop exec playerctl stop
 
 
 ################### BAR ######################

@@ -120,10 +120,7 @@ echo ""
 #============================================ COPY i3 CONFIG FILES =====================================================#
 echo "############################################################"
 echo "##########        Copying i3 config files         ##########"
-if [ -d ~/.config/i3/ ] ; then 
-	sudo rm -r ~/.config/i3
-fi
-sudo cp -r i3 ~/.config/i3
+sudo cp -R i3 ~/.config/
 echo "##########              Successful!               ##########"
 echo ""
 
@@ -131,7 +128,7 @@ echo ""
 #==================================== INSTALL SOFTWARE FROM OFFICIAL REPO ===============================================#
 echo "############################################################"
 echo "##########      Installing official software      ##########"
-sudo pacman -S --noconfirm --needed baobab bleachbit catfish clementine conky curl dconf-editor dmidecode evince firefox galculator gimp gksu glances gnome-font-viewer gparted hardinfo hddtemp htop lm_sensors lsb-release meld mlocate net-tools notify-osd numlockx polkit-gnome rxvt-unicode redshift ristretto screenfetch scrot thunar tumbler vim vlc vnstat unclutter
+sudo pacman -S --noconfirm --needed baobab bleachbit blueman catfish clementine conky curl dconf-editor dmidecode evince firefox galculator gimp gksu glances gnome-font-viewer gparted hardinfo hddtemp htop lm_sensors lsb-release meld mlocate net-tools notify-osd numlockx polkit-gnome rxvt-unicode redshift ristretto screenfetch scrot thunar tumbler vim vlc vnstat xbindkeys unclutter
 echo "##########              Successful!               ##########"
 echo ""
 
@@ -148,14 +145,16 @@ sudo systemctl start vnstat
 echo "##########              Successful!               ##########"
 echo ""
 
-#################### URXVT CONFIG ####################
+
+#================================================ URXVT CONFIG ==========================================================#
 echo "############################################################"
 echo "##########           Copying .Xdefaults           ##########"
 sudo cp -r .Xdefaults ~/
 echo "##########              Successful!               ##########"
 echo ""
 
-#################### INSTALL EXTRA ####################
+
+#===================================== INSTALL SOFTWARE FROM EXTRA REPO =================================================#
 echo "############################################################"
 echo "##########        Installing Google-Chrome        ##########"
 package="google-chrome"
@@ -280,6 +279,21 @@ echo ""
 echo "############################################################"
 echo "##########        Installing pa-applet-git        ##########"
 package="pa-applet-git"
+if pacman -Qi $package &> /dev/null; then
+	echo "##########            Already installed!              ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "##########              Successful!               ##########"
+	else
+		echo "##########                Failed!                 ##########"
+	fi
+fi
+echo ""
+
+echo "############################################################"
+echo "##########    Installing network-manager-applet   ##########"
+package="network-manager-applet"
 if pacman -Qi $package &> /dev/null; then
 	echo "##########            Already installed!              ##########"
 else
