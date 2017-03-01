@@ -121,7 +121,7 @@ echo ""
 echo "############################################################"
 echo "##########        Copying i3 config files         ##########"
 sudo mkdir -p ~/.config/i3/
-sudo cp -R i3/* ~/.config/i3/
+sudo cp -R /i3/* ~/.config/i3/
 echo "##########              Successful!               ##########"
 echo ""
 
@@ -250,16 +250,6 @@ else
 		echo "##########                Failed!                 ##########"
 	fi
 fi
-echo ""
-
-echo "############################################################"
-echo "##########             Hardcode Fixer!            ##########"
-sudo pacman -S --needed --noconfirm xdg-user-dirs
-[ -d /tmp/hardcode-fixer ] && rm -rf "/tmp/hardcode-fixer" || echo ""
-git clone https://github.com/Foggalong/hardcode-fixer /tmp/hardcode-fixer
-sudo /tmp/hardcode-fixer/fix.sh
-rm -rf /tmp/hardcode-fixer
-echo "##########              Successful!               ##########"
 echo ""
 
 echo "############################################################"

@@ -43,6 +43,16 @@ fi
 echo ""
 
 echo "############################################################"
+echo "##########          Hardcoded Icon Fixer!         ##########"
+sudo pacman -S --needed --noconfirm xdg-user-dirs
+[ -d /tmp/hardcode-fixer ] && rm -rf "/tmp/hardcode-fixer" || echo ""
+git clone https://github.com/Foggalong/hardcode-fixer /tmp/hardcode-fixer
+sudo /tmp/hardcode-fixer/fix.sh
+rm -rf /tmp/hardcode-fixer
+echo "##########              Successful!               ##########"
+echo ""
+
+echo "############################################################"
 echo "##########        Installing pasystray-git        ##########"
 package="pasystray-git"
 if pacman -Qi $package &> /dev/null; then
