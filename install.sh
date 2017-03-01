@@ -120,7 +120,8 @@ echo ""
 #============================================ COPY i3 CONFIG FILES =====================================================#
 echo "############################################################"
 echo "##########        Copying i3 config files         ##########"
-sudo cp -R i3 ~/.config/
+sudo mkdir -p ~/.config/i3/
+sudo cp -R i3/* ~/.config/i3/
 echo "##########              Successful!               ##########"
 echo ""
 
@@ -306,21 +307,6 @@ else
 fi
 echo ""
 
-echo "############################################################"
-echo "##########         Installing sardi-icons         ##########"
-package="sardi-icons"
-if pacman -Qi $package &> /dev/null; then
-	echo "##########            Already installed!              ##########"
-else
-	packer -S --noconfirm --noedit  $package
-	if pacman -Qi $package &> /dev/null; then
-		echo "##########              Successful!               ##########"
-	else
-		echo "##########                Failed!                 ##########"
-	fi
-fi
-echo ""
-
 
 #============================================== INSTALL LIGHTDM ========================================================#
 echo "############################################################"
@@ -335,6 +321,23 @@ sudo systemctl enable lightdm.service
 
 sudo cp -r wallpaper.jpg /usr/share/pixmaps/
 sudo cp -r lightdm-gtk-greeter.conf /etc/lightdm/
+echo "##########              Successful!               ##########"
+echo ""
+
+
+#======================================== INSTALL PARCELLITE CLIPBOARD =================================================#
+echo "############################################################"
+echo "##########          Installing Parcellite         ##########"
+sudo pacman -S --noconfirm --needed parcellite
+echo "##########              Successful!               ##########"
+echo ""
+
+
+#=============================================== TOUCHPAD CONFIG =======================================================#
+echo "############################################################"
+echo "########## Installing Synaptics and copying config##########"
+sudo pacman -S --noconfirm --needed xf86-input-synaptics
+sudo cp -r 50-synaptics.conf /etc/X11/xorg.conf.d/
 echo "##########              Successful!               ##########"
 echo ""
 

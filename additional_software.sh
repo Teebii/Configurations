@@ -28,6 +28,21 @@ fi
 echo ""
 
 echo "############################################################"
+echo "##########         Installing sardi-icons         ##########"
+package="sardi-icons"
+if pacman -Qi $package &> /dev/null; then
+	echo "##########            Already installed!              ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "##########              Successful!               ##########"
+	else
+		echo "##########                Failed!                 ##########"
+	fi
+fi
+echo ""
+
+echo "############################################################"
 echo "##########        Installing pasystray-git        ##########"
 package="pasystray-git"
 if pacman -Qi $package &> /dev/null; then
@@ -43,27 +58,10 @@ fi
 echo ""
 
 
-#=============================================== TOUCHPAD CONFIG =======================================================#
-echo "############################################################"
-echo "########## Installing Synaptics and copying config##########"
-sudo pacman -S --noconfirm --needed xf86-input-synaptics
-sudo cp -r 50-synaptics.conf /etc/X11/xorg.conf.d/
-echo "##########              Successful!               ##########"
-echo ""
-
-
 #================================================ INSTALL LaTeX ========================================================#
 echo "############################################################"
 echo "##########            Installing LaTeX            ##########"
 sudo pacman -S --noconfirm --needed texlive-most texlive-lang texstudio
-echo "##########              Successful!               ##########"
-echo ""
-
-
-#======================================== INSTALL PARCELLITE CLIPBOARD =================================================#
-echo "############################################################"
-echo "##########          Installing Parcellite         ##########"
-sudo pacman -S --noconfirm --needed parcellite
 echo "##########              Successful!               ##########"
 echo ""
 
