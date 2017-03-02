@@ -13,6 +13,12 @@ echo "##########              Successful!               ##########"
 echo ""
 
 echo "############################################################"
+echo "##########         Installing Libreoffice         ##########"
+sudo pacman -S --noconfirm --needed libreoffice-still
+echo "##########              Successful!               ##########"
+echo ""
+
+echo "############################################################"
 echo "##########          Installing playerctl          ##########"
 package="playerctl"
 if pacman -Qi $package &> /dev/null; then

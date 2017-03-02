@@ -297,6 +297,22 @@ else
 fi
 echo ""
 
+echo "############################################################"
+echo "##########       Installing hibernate script      ##########"
+package="hibernate-script"
+if pacman -Qi $package &> /dev/null; then
+	echo "##########            Already installed!              ##########"
+else
+	packer -S --noconfirm --noedit  $package
+	if pacman -Qi $package &> /dev/null; then
+		echo "##########              Successful!               ##########"
+	else
+		echo "##########                Failed!                 ##########"
+	fi
+fi
+echo ""
+
+
 
 #============================================== INSTALL LIGHTDM ========================================================#
 echo "############################################################"
