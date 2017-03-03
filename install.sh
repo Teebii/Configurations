@@ -297,22 +297,6 @@ else
 fi
 echo ""
 
-echo "############################################################"
-echo "##########       Installing hibernate script      ##########"
-package="hibernate-script"
-if pacman -Qi $package &> /dev/null; then
-	echo "##########            Already installed!              ##########"
-else
-	packer -S --noconfirm --noedit  $package
-	if pacman -Qi $package &> /dev/null; then
-		echo "##########              Successful!               ##########"
-	else
-		echo "##########                Failed!                 ##########"
-	fi
-fi
-echo ""
-
-
 
 #============================================== INSTALL LIGHTDM ========================================================#
 echo "############################################################"
@@ -327,6 +311,7 @@ sudo systemctl enable lightdm.service
 
 sudo cp -r wallpaper.jpg /usr/share/pixmaps/
 sudo cp -r lightdm-gtk-greeter.conf /etc/lightdm/
+sudo cp -r screensaver.png /usr/share/pixmaps/
 echo "##########              Successful!               ##########"
 echo ""
 
@@ -350,7 +335,7 @@ echo ""
 
 #============================================ MANUPULATING TIME ========================================================#
 echo "############################################################"
-echo "##########           Manupulating TIME            ##########"
+echo "##########           Setting CET TIME             ##########"
 sudo ln -sf /usr/share/zoneinfo/CET /etc/localtime
 echo "##########              Successful!               ##########"
 echo ""
