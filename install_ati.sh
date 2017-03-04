@@ -22,11 +22,11 @@ echo "##########              Successful!               ##########"
 echo ""
 
 
-#============================================ INSTALL XORG-INTEL =======================================================#
+#============================================= INSTALL XORG-ATI ========================================================#
 echo "############################################################"
-echo "##########        Installing xorg-intel           ##########"
+echo "##########         Installing xorg-ati            ##########"
 sudo pacman -S --noconfirm --needed xorg-server xorg-server-utils xorg-xinit xorg-twm xterm 
-sudo pacman -S --noconfirm --needed xf86-video-intel 
+sudo pacman -S --noconfirm --needed xf86-video-ati
 echo "##########              Successful!               ##########"
 echo ""
 
