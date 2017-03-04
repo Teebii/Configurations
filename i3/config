@@ -238,7 +238,7 @@ bindsym $mod+F7 workspace $ws3;focus; exec thunar
 bindsym $mod+F8 workspace $ws8;focus; exec thunderbird
 
 #workspace 9 related
-bindsym $mod+F9 workspace $ws3;focus; exec franz-bin
+bindsym $mod+F9 workspace $ws9;focus; exec franz-bin
 
 #workspace 10 related
 bindsym $mod+F10 workspace $ws10;focus; exec spotify
