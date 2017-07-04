@@ -26,6 +26,9 @@ font pango:DejaVu Sans Mono 9
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# Seting the default layout for new workspaces
+workspace_layout tabbed
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -256,6 +259,8 @@ bindsym Mod1+Ctrl+Left workspace prev
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+#switch to urgent worksapce
+bindsym $mod+y [urgent=latest] focus
 
 ################### AUDIO ######################
 #bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
