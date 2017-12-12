@@ -19,6 +19,11 @@ parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+# aktiviert Bashvervollständigung in interaktiven Shells
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 # Setting prompt
 PROMPT_DIRTRIM=2
 PS1="${YELLOW}[${ORANGE}\u${YELLOW}@${GREEN}\h ${LIGHTBLUE}\w${YELLOW}]${TUERKIS}\$(parse_git_branch)${YELLOW}\$ ${DEFAULT}"
@@ -26,7 +31,6 @@ PS1="${YELLOW}[${ORANGE}\u${YELLOW}@${GREEN}\h ${LIGHTBLUE}\w${YELLOW}]${TUERKIS
 
 # Setting aliases
 alias ls='ls --all --color=auto --group-directories-first'
-alias update='sudo pacman -Syu'
 
 # Change directly into git
 function cdgit () {
@@ -39,5 +43,8 @@ function up () {
 	done
 }
 
+# Adding SSH Keys
+ssh-add ~/.ssh/id_github 2> /dev/null
+
 BROWSER=/usr/bin/google-chrome-stable
-EDITOR=/usr/bin/subl3
+EDITOR=/usr/bin/subl

@@ -175,7 +175,7 @@ bindsym --release button2 kill
 # you can find the class with the program xprop
 
 assign [class="Google-chrome|google-chrome"]          → $ws2
-assign [class="Subl3|subl3"]                          → $ws3
+assign [class="Subl|subl"]                            → $ws3
 assign [class="Thunar|thunar"]                        → $ws7
 assign [class="Mail|Thunderbird"]                     → $ws8
 assign [class="Franz|franz"]                          → $ws9
@@ -198,7 +198,7 @@ for_window [class="Firefox"] none
 #for_window [class="Mail"] none
 
 # Texteditor
-exec subl3
+exec subl
 for_window [class="Subl3"] none
 
 # Music
@@ -217,8 +217,8 @@ exec dropbox
 exec nm-applet
 
 # Sound
-exec pa-applet
-exec blueman-applet
+#exec pa-applet
+#exec blueman-applet
 
 # Key bindings
 exec --no-startup-id xbindkeys
@@ -232,7 +232,7 @@ bindsym $mod+F1 workspace $ws1;focus; exec i3-sensible-terminal
 bindsym $mod+F2 workspace $ws2;focus; exec google-chrome-stable
 
 #workspace 3 related
-bindsym $mod+F3 workspace $ws3;focus; exec subl3
+bindsym $mod+F3 workspace $ws3;focus; exec subl
 
 #workspace 7 related
 bindsym $mod+F7 workspace $ws3;focus; exec thunar
@@ -241,7 +241,7 @@ bindsym $mod+F7 workspace $ws3;focus; exec thunar
 bindsym $mod+F8 workspace $ws8;focus; exec thunderbird
 
 #workspace 9 related
-bindsym $mod+F9 workspace $ws9;focus; exec franz-bin
+bindsym $mod+F9 workspace $ws9;focus; exec franz
 
 #workspace 10 related
 bindsym $mod+F10 workspace $ws10;focus; exec spotify
@@ -262,15 +262,11 @@ for_window [urgent=latest] focus
 #switch to urgent worksapce
 bindsym $mod+y [urgent=latest] focus
 
+
 ################### AUDIO ######################
-#bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
-#bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
-#bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
-##https://github.com/acrisci/playerctl/
-#bindsym XF86AudioPlay exec playerctl play-pause
-#bindsym XF86AudioNext exec playerctl next
-#bindsym XF86AudioPrev exec playerctl previous
-#bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
 
 
 ################### BAR ######################
